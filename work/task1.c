@@ -8,10 +8,11 @@ int wordCount(char buf[])
 		if ((*buf != ' ') && !in)
 		{
 			in = 1;
+			count++;
 		}
 		else if (((*buf == ' ') || (*buf == '\n')) && in)
 		{
-			count++;
+			
 			in = 0;
 		}
 		buf++;

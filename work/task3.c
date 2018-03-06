@@ -6,7 +6,7 @@ int getMaxWord(char buf[], char word[])
 	char * pmax = 0, *pcurrent = 0;
 	for (int i = 0; buf[i]; ++i)
 	{
-		if (buf[i] != ' ')
+		if (buf[i] != ' ' && buf[i] != '\n')
 		{
 			if (!in)
 			{
@@ -15,7 +15,7 @@ int getMaxWord(char buf[], char word[])
 			}
 			current_lenght++;
 		}
-		if ((buf[i] == ' ' || buf[i] == '\n') && in)
+		if ((buf[i] == ' ') && in)
 		{
 			if (max_lenght < current_lenght)
 			{
@@ -24,6 +24,14 @@ int getMaxWord(char buf[], char word[])
 			}
 			current_lenght = 0;
 			in = 0;
+		}
+	}
+	if (in)
+	{
+		if (max_lenght < current_lenght)
+		{
+			max_lenght = current_lenght;
+			pmax = pcurrent;
 		}
 	}
 	for (int i = 0; i < max_lenght; ++i)
